@@ -15,7 +15,7 @@ function writePassword() {
 }
 
 function generatePassword() {
-    // to ask something to user 
+    // to ask the user 
     // prompt will return string datatype.
     // convert string into number datatype. - parseInt
     let length = parseInt(prompt("Please enter how many characters you want include in your Password. (8 to 128)"));
@@ -38,6 +38,7 @@ function generatePassword() {
     let confirmedSpecial = confirm("Do you want to include Special characters?")
     let confirmedNumeric = confirm("Do you want to include Numeric characters?")
 
+    // force the user to select at least one of the characters.
     if(!confirmedUpperCase && !confirmedLowerCase && !confirmedSpecial && !confirmedNumeric){
         alert("You must select at least one of the following character types: Uppercase, Lowercase, Special or Numeric.");
         return null;
@@ -57,27 +58,41 @@ function generatePassword() {
     if(confirmedNumeric){
         allChar = allChar.concat(numericChar)
     }
-
-    while(allChar.length<length){ 
-        allChar.push("1");
+    console.log(allChar + " here's the concatination");
+    randomArray(allChar); // randomize to mix up all the character types
+    randomArray(allChar); // randomize to mix up all the character types
+    randomArray(allChar); // randomize to mix up all the character types
+    randomArray(allChar); // randomize to mix up all the character types
+    randomArray(allChar); // randomize to mix up all the character types
+    console.log(allChar + " here's after 5 randomizations");
+    
+    while(allChar.length<length){ //push items onto the array until the array length desired
+        let x = Math.floor(Math.random()*9);
+        
+      //  if (x > -1 && x <10) {
+        //  x=x++;
+        allChar.push(x);
     }
 
-    while(allChar.length>length){
+    while(allChar.length>length){ // pop items from the array until the array length desired
         allChar.pop();
     }
-    console.log(allChar);
-    console.log(allChar.length);
+    console.log(allChar + " here's after push and pop");
+    // console.log(allChar.length);
  
-    randomArray(allChar); // call for randomization of the array
+    randomArray(allChar); // call for randomization of the final array
+   
     console.log(allChar); // debug
-    randomArray(allChar); // debug
+
+    return allChar.join("");
+    // randomArray(allChar); // debug
    }
 // question: there are 80 elements in the array. how to I adjust for the potential that 
 // less or more than 80 characters are called for? Do I append or pop from the original 80?
 
 // create array to collect inputs from user
    let pWord = [];    
-
+//   randomArray(allChar);
 // randomize the array   
    function randomArray(allChar) {
     for (let i = allChar.length - 1; i > 0; i--) {
