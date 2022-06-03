@@ -59,41 +59,33 @@ function generatePassword() {
         allChar = allChar.concat(numericChar)
     }
     console.log(allChar + " here's the concatination");
+    randomArray(allChar); // randomize to mix up all the character types which is necessary to avoid loosing character types if the allChar gets poped.
     randomArray(allChar); // randomize to mix up all the character types
     randomArray(allChar); // randomize to mix up all the character types
     randomArray(allChar); // randomize to mix up all the character types
     randomArray(allChar); // randomize to mix up all the character types
-    randomArray(allChar); // randomize to mix up all the character types
-    console.log(allChar + " here's after 5 randomizations");
     
     while(allChar.length<length){ //push items onto the array until the array length desired
-        let x = Math.floor(Math.random()*9);
+        let x = Math.floor(Math.random()*9); //add numbers because they are disproportionately under represented.
         
-      //  if (x > -1 && x <10) {
-        //  x=x++;
         allChar.push(x);
     }
 
     while(allChar.length>length){ // pop items from the array until the array length desired
         allChar.pop();
     }
-    console.log(allChar + " here's after push and pop");
-    // console.log(allChar.length);
  
     randomArray(allChar); // call for randomization of the final array
    
-    console.log(allChar); // debug
+    //console.log(allChar); // debug
 
     return allChar.join("");
     // randomArray(allChar); // debug
    }
-// question: there are 80 elements in the array. how to I adjust for the potential that 
-// less or more than 80 characters are called for? Do I append or pop from the original 80?
 
 // create array to collect inputs from user
    let pWord = [];    
-//   randomArray(allChar);
-// randomize the array   
+
    function randomArray(allChar) {
     for (let i = allChar.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -102,65 +94,7 @@ function generatePassword() {
   console.log(allChar); //debug
   }
   
-  //console.log(allChar);
-    //console.log(allChar.length);
-   // const randString = Math.random().toString().allChar(2, length); 
    console.log(pWord);     
    
-   //******************************************************************************** */
-// collect input from user for 4 data types                          
-   //  myNumbers();
-     function myNumbers() {
-        let numbers = prompt("Please enter how many characters you want in your Password.");
-       // console.log(numbers);
-        if (numbers != null) {document.getElementById("demo").innerHTML = numbers + " is how many numbers will be included in your Password.";
-         }
-         else {myNumbers()}
-         
-// generate a random number with the user's input                                 
-        document.getElementById("demo").innerHTML =
-        Math.floor(Math.random() * (10 ** numbers));
-
-// populate the array with the random number just generated.        
-        const myNumberArray = numbers.split("");
-        let numberLength = myNumberArray.length;
-
-
-  //      pWord.push("demo");                                
-        myCapitals()                                
-                            } 
-// prompt the user to supply a capital letter
-    function myCapitals() {
-        let capitals = prompt("Please enter a single Capital letter you want in your Password.");
-        if (capitals != null) {
-            document.getElementById("demo1").innerHTML =
-            "Capital " + capitals + " will be included in your Password.";
-                                }
-// force the string to uppercase
-            let capitalsResult = capitals.toUpperCase();  
-
-            document.getElementById("demo1").innerHTML =
-            Math.floor(Math.random() * (10 ** numberLength));                           
-            myLowers()
-                            }
-// prompt user to supply a lower case letter
-    function myLowers() {
-        let lowers = prompt("Please enter a single lower case letter to include in your Password.");
-        if (lowers != null) {
-            document.getElementById("demo2").innerHTML =
-            "Lower case " + lowers + " will be included in your Password.";
-
-// force the string to lowercase
-            let capitalsResult = capitals.toLowerCase(); 
-            mySpecials()
-                            }
-                        }
-    function mySpecials() {
-        let specials = prompt("Please enter one of the following special characters !, @, #, $, %, ^, &, *, ? to include in your Password.");
-        if (specials != null) {
-            document.getElementById("demo3").innerHTML =
-            "Special character " + specials + " will be included in your Password.";
-                                }
-                            }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+   //******************************************************************************** *//
+ 
